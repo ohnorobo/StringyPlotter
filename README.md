@@ -25,9 +25,11 @@ This takes a minute or so on my old computer and due to the sequential nature of
 
 With Python 3, make sure you have Pillow, NumPy, and SciPy installed. Then:
 
-	python3 ./StringyPlotter.py input_image.png output_image.svg 2
+	python3 ./StringyPlotter.py input_image.png output_image.svg 2 100
 
-The number on the end is how much you want to divide the total number of black pixels in the image to obtain a sample size. The value of 2 means that we'll use half of the black pixels at random to connect our lines. You will probably want to play with this number according to your patience or image size.
+The firsat number is how much you want to divide the total number of black pixels in the image to obtain a sample size. The value of 2 means that we'll use half of the black pixels at random to connect our lines. You will probably want to play with this number according to your patience or image size.
+
+The second number means to skip (move with pen up instead of down) any paths longer than this length.
 
 ## What does it look like?
 
