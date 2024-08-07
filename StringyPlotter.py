@@ -2,7 +2,6 @@ import numpy as np
 from scipy.spatial.distance import cdist
 from PIL import Image
 import sys
-from pprint import pprint
 
 input_image = sys.argv[1]
 output_image = sys.argv[2]
@@ -28,9 +27,6 @@ for x in range(iiiii.shape[0]-1):
     distance_match = np.where(all_distances == next_distance)[0][0]
     found_next = the_rest[distance_match]
 
-    #pprint(("distance", next_distance))
-    #pprint(("coll", distance_collection))
-    
     point_collection = np.concatenate([point_collection,np.array([found_next])])
     distance_collection = np.concatenate([distance_collection,np.array([next_distance])])
     
@@ -46,14 +42,8 @@ path_template = '<path d="{}" fill="none" stroke="black" />"'
 move_template = 'M {} {} '
 line_template = 'L {} {} '
 
-
-pprint(("points", point_collection))
-pprint(("distances", distance_collection))
-
 path_string = move_template.format(*point_collection[0])
 for p, d in zip(point_collection[1:], distance_collection[1:]):
-    # TODO if distance is too long use a move instead of a line
-
     if d > skip_paths_longer_than:
         path_string += move_template.format(*p)
     else:
